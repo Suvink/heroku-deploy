@@ -1,0 +1,25 @@
+name: 'Heroku Deploy with Telegram'
+description: 'A simple Github Action to deploy to Heroku and notify via Telegram.'
+inputs:
+  heroku_app_name:
+    description: 'The app you want to deploy into.'
+    required: true
+    default: myNewApp
+  heroku_email:
+    description: 'The email you used to sign up with Heroku.'
+    required: true
+    default: 'noemail'
+  dontuseforce:
+    description: "Set this to true if you don't want to use --force"
+    default: false
+  buildpack: 
+    description: Optional buildpack to build the app
+branding:
+  icon: 'send'
+  color: 'blue'
+outputs:
+  status:
+    description: 'build status'
+runs:
+  using: 'node12'
+  main: 'index.js'
