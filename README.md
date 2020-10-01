@@ -12,28 +12,27 @@ Use the following template to create your action.
 
 ```yaml
 name: Heroku Deploy with Telegram
-	'on': 
-		push:
-			branches: [master]
+  'on': 
+    push:
+      branches: [master]
 jobs:
-	build:
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout
-			  uses: actions/checkout@v2
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-			- name: Deploy to Heroku
-			  uses: Suvink/heroku-static@v0.3
-			  with:
-				heroku_app_name: Your unique Heroku app name
-				heroku_email: Email you used for Heroku
-				dontuseforce: false #Disable force push [optional]
-				buildpack: Your buildpack 
-			  env:
-				HEROKU_TOKEN: '${{ secrets.HEROKU_TOKEN }}'
-				BOT_TOKEN: '${{ secrets.BOT_TOKEN }}'
-				CHAT_ID: '${{ secrets.CHAT_ID }}'
-
+      - name: Deploy to Heroku
+        uses: Suvink/heroku-static@v0.3
+        with:
+        heroku_app_name: Your unique Heroku app name
+        heroku_email: Email you used for Heroku
+        dontuseforce: false #Disable force push [optional]
+        buildpack: Your buildpack 
+        env:
+        HEROKU_TOKEN: '${{ secrets.HEROKU_TOKEN }}'
+        BOT_TOKEN: '${{ secrets.BOT_TOKEN }}'
+        CHAT_ID: '${{ secrets.CHAT_ID }}'
 ```
 
 ## Secrets
